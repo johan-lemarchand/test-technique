@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste des commentaires{% endblock %}
+
+{% block body %}
+    {% include'product/header.html.twig' %}
+    <div class="container py-5">
+
+        <h2 class="font-weight-bold mb-2">Nos avis </h2>
+
+        <div class="box row pb-5 mb-4">
+            <div class="col-md-3">
+                {{form_start(form)}}
+                {{form_widget(form)}}
+                <button type="submit" class="btn btn-primary">filtrer</button>
+                {{form_end(form)}}
+            </div>
+            {% for comment in avis %}
+                <div class="card m-2 d-flex justify-content-between " style="width: 18rem;">
+                    <img src="{{ comment.picture }}" class="card-img-top" alt="...">
+                    <div class="card-body d-flex justify-content-between flex-column">
+                        <h5 class="card-title">{{ comment.email }}</h5>
+                        <h5 class="card-title">{{ comment.pseudo }}</h5>
+                        <p class="card-text">Note:{{ comment.comment }}</p>
+                        <div class="card_price mt-2">
+
+                            <p>Note: {{ comment.rate }}</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

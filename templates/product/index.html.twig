@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}les produits {% endblock %}
+
+{% block body %}
+    {% include'product/header.html.twig' %}
+
+    {% for label, messages in app.flashes %}
+        <div class="container">
+            <div class="alert alert-{{ label }}">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    {% include'product/main.html.twig' %}
+{% endblock %}

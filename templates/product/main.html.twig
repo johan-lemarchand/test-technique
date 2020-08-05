@@ -1,0 +1,27 @@
+<div class="container py-5">
+
+    <h2 class="font-weight-bold mb-2">Nos chaussures</h2>
+    <p class="font-italic text-muted mb-4">N'hésitez pas à regarder nos avis client <a href="{{ path('avis') }}">ici</a> </p>
+
+    <div class="box row pb-5 mb-4">
+
+        {% for product in avis %}
+            <div class="card m-4 d-flex justify-content-between " style="width: 18rem;">
+                    {% include 'partials/rating.html.twig' with {'rate': product.product.avgRating} %}
+                <img src="{{ product.product.picture }}" class="card-img-top" alt="...">
+
+                <div class="card-body d-flex justify-content-between flex-column">
+                <h5 class="card-title">{{ product.product.name }}</h5>
+                <p class="card-text">{{ product.product.description }}</p>
+                <div class="card_price mt-4">
+
+                    <p> {{ product.product.price }} euros</p>
+                </div>
+                    <a href="{{ path('avis_add', {'id': product.product.id}) }}" class="btn btn-primary ">Poster un avis sur ce produit</a>
+            </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+</div>
